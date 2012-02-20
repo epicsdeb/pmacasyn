@@ -2,13 +2,13 @@ Source: tpmac
 Section: devel
 Priority: extra
 Maintainer: Daron Chabot <dchabot@bnl.gov>
-Build-Depends: debhelper (>= 7), autotools-dev
-Standards-Version: 3.8.3
+Build-Depends: debhelper (>= 7.0.50~), autotools-dev
+Standards-Version: 3.8.4
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
 Package: tpmac
 Architecture: any
-Depends: ${shlibs:Depends}, epics-dev (>= 3.14.11-8~lenny1), epics-synapps (>= 20110728-2~lenny1)
+Depends: ${misc:Depends}, ${shlibs:Depends}, epics-dev (>= 3.14.11-8~lenny1), epics-synapps (>= 20110728-2~lenny1)
 Description: Libraries for working with Delta Tau Turbo PMACs.
  tpmac contains the libraries and database defintions files for
  working with Delta Tau Turbo PMAC boards in an EPICS development
