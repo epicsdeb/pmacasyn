@@ -7,8 +7,13 @@
 # This special exception was added by Craig Small in version 0.37 of dh-make.
 
 # Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+export DH_VERBOSE=1
+
+export EPICS_HOST_ARCH:=$(shell /usr/lib/epics/startup/EpicsHostArch)
 
 INSTALL_LOCATION=/opt/tpmac
 %:
 	dh  $@
+
+# no Automagic tools here...
+override_dh_auto_configure:
