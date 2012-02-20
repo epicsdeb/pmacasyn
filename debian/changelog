@@ -1,0 +1,5 @@
+tpmac (3.10-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- djc <djc@unknown>  Sun, 19 Feb 2012 18:53:27 -0500
