@@ -1,13 +1,15 @@
 This work was packaged for Debian by:
 
-    djc <djc@unknown> on Sun, 19 Feb 2012 18:53:27 -0500
+    Daron Chabot <dchabot@bnl.gov> on Sun, 19 Feb 2012 18:53:27 -0500
 
-It was downloaded from <url://example.com>
+It was downloaded from <http://www.gmca.anl.gov/TPMAC2/index.html>
 
 Upstream Author(s):
 
-    <put author's name and email here>
-    <likewise for another author>
+    Oleg Makarov <makarov@anl.gov>
+    Sergey Stepanov <sstepanov@anl.gov>
+    Nick Rees <nick.rees@diamond.ac.uk>
+    Matt Pearson <matthew.pearson@diamond.ac.uk>
 
 Copyright:
 
@@ -20,7 +22,7 @@ License:
 
 The Debian packaging is:
 
-    Copyright (C) 2012 djc <djc@unknown>
+    Copyright (C) 2012 Daron Chabot <dchabot@bnl.gov>
 
 # Please chose a license for your packaging work. If the program you package
 # uses a mainstream license, using the same license is the safest choice.
