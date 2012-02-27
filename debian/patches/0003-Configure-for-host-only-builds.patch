@@ -1,0 +1,26 @@
+From 87ad5867b6ab30da5ee09a9c0114564cf6d8b31d Mon Sep 17 00:00:00 2001
+From: djc <daron.chabot@gmail.com>
+Date: Mon, 27 Feb 2012 17:25:42 -0500
+Subject: [PATCH 3/5] Configure for host-only builds.
+
+Typically this is linux-x86 or linux-x86_64(-debug).
+---
+ configure/CONFIG |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/configure/CONFIG b/configure/CONFIG
+index 67555b3..798bc6f 100644
+--- a/configure/CONFIG
++++ b/configure/CONFIG
+@@ -5,7 +5,7 @@ include $(TOP)/configure/CONFIG_APP
+ # At present, base has only 68040
+ #CROSS_COMPILER_TARGET_ARCHS = vxWorks-68040 vxWorks-ppc604
+ #CROSS_COMPILER_TARGET_ARCHS = vxWorks-68040
+-CROSS_COMPILER_TARGET_ARCHS = vxWorks-ppc603 vxWorks-ppc604 vxWorks-ppc604_long
++CROSS_COMPILER_TARGET_ARCHS = 
+ 
+ # Use this when your IOC and the host use different paths
+ # to access the application. Typically this will be 
+-- 
+1.7.0.4
+

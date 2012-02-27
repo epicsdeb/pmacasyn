@@ -1,0 +1,39 @@
+From 60c040603f950da040f8e6a55568f2814c3c25e2 Mon Sep 17 00:00:00 2001
+From: djc <daron.chabot@gmail.com>
+Date: Mon, 27 Feb 2012 17:15:34 -0500
+Subject: [PATCH 1/5] Change location of EPICS_BASE.
+
+Coincide with the standard location for NSLS-II packages.
+---
+ configure/RELEASE |   13 +++----------
+ 1 files changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/configure/RELEASE b/configure/RELEASE
+index 2791b2e..e318356 100644
+--- a/configure/RELEASE
++++ b/configure/RELEASE
+@@ -4,18 +4,11 @@
+ 
+ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
+ 
+-#Sergey:
+-EPICS_BASE=/usr/local/epics/base
+-SUPPORT=/home/gmca/epics_synApps/synApps_5_2
+-#WORK = /dls_sw/work/R3.14.8.2/support
+-
+-ASYN=/home/gmca/epics_synApps/synApps_5_2/asyn/4-9
++#ASYN=/home/gmca/epics_synApps/synApps_5_2/asyn/4-9
+ #MOTOR=	$(SUPPORT)/motor/6-0dls4
+-#MOTOR=	$(WORK)/motor
+ 
+ #If using the sequencer, point SNCSEQ at its top directory:
+ #SNCSEQ=/usr/local/epics/seq
+ 
+-#Capfast users may need the following definitions
+-#CAPFAST_TEMPLATES=
+-#SCH2EDIF_PATH=
++EPICS_BASE=/usr/lib/epics
++
+-- 
+1.7.0.4
+

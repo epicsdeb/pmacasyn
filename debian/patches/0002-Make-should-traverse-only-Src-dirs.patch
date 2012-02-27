@@ -1,0 +1,31 @@
+From b7841ef3b9a0bb6798ffcfb8b89df1849adae76f Mon Sep 17 00:00:00 2001
+From: djc <daron.chabot@gmail.com>
+Date: Sun, 19 Feb 2012 19:47:28 -0500
+Subject: [PATCH 2/5] Make should traverse only *Src dirs.
+
+---
+ pmacApp/Makefile |    6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pmacApp/Makefile b/pmacApp/Makefile
+index fc5e886..0f18618 100644
+--- a/pmacApp/Makefile
++++ b/pmacApp/Makefile
+@@ -1,11 +1,11 @@
+ TOP = ..
+ include $(TOP)/configure/CONFIG
+ ## DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *src*))
+-## DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Src*))
++DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Src*))
+ ## DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *db*))
+ ## DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Db*))
+-DIRS += src
+-DIRS += tsubSrc
++#DIRS += src
++#DIRS += tsubSrc
+ ## DIRS += Db
+ include $(TOP)/configure/RULES_DIRS
+ 
+-- 
+1.7.0.4
+

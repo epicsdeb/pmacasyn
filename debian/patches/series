@@ -1,0 +1,6 @@
+0001-Change-location-of-EPICS_BASE.patch
+0002-Make-should-traverse-only-Src-dirs.patch
+0003-Configure-for-host-only-builds.patch
+0004-Fix-seg-faults.patch
+0005-Hack-around-initialization-problem.patch
+

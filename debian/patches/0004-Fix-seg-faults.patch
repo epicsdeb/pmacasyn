@@ -1,0 +1,48 @@
+From 6b1d605143f39baf07fc77e1b4f1b0cf5469d99b Mon Sep 17 00:00:00 2001
+From: djc <daron.chabot@gmail.com>
+Date: Mon, 27 Feb 2012 17:32:26 -0500
+Subject: [PATCH 4/5] Fix seg-faults.
+
+Two extraneous diagnostic messages were causing seg-faults.
+Now commented out.
+---
+ pmacApp/pmacAsynCoordSrc/pmacAsynCoord.c |   12 ++++++------
+ 1 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/pmacApp/pmacAsynCoordSrc/pmacAsynCoord.c b/pmacApp/pmacAsynCoordSrc/pmacAsynCoord.c
+index fcddab5..72b9ea4 100644
+--- a/pmacApp/pmacAsynCoordSrc/pmacAsynCoord.c
++++ b/pmacApp/pmacAsynCoordSrc/pmacAsynCoord.c
+@@ -999,11 +999,11 @@ int pmacSetCoordMovingPollPeriod(int ref, int movingPollPeriod)
+     for (pDrv = pFirstDrv; pDrv != NULL; pDrv = pDrv->pNext) {
+       drvPrint(drvPrintParam, TRACE_FLOW, "** Setting moving poll period of %dms on ref %d\n", movingPollPeriod, pDrv->ref);
+       if (ref == pDrv->ref) {
+-	pDrv->movingPollPeriod = (double)movingPollPeriod / 1000.0;
+-	status = 0;
++        pDrv->movingPollPeriod = (double)movingPollPeriod / 1000.0;
++        status = 0;
+       }
+     }
+-    drvPrint(drvPrintParam, TRACE_FLOW, "** Moving poll period set to %fs\n.", pDrv->movingPollPeriod);
++    /*drvPrint(drvPrintParam, TRACE_FLOW, "** Moving poll period set to %fs\n.", pDrv->movingPollPeriod);*/
+   }
+ 
+   return status;
+@@ -1026,11 +1026,11 @@ int pmacSetCoordIdlePollPeriod(int ref, int idlePollPeriod)
+     for (pDrv = pFirstDrv; pDrv!=NULL; pDrv = pDrv->pNext) {
+       drvPrint(drvPrintParam, TRACE_FLOW, "** Setting idle poll period of %dms on ref %d\n", idlePollPeriod, pDrv->ref);
+       if (ref == pDrv->ref) {
+-	pDrv->idlePollPeriod = (double)idlePollPeriod / 1000.0;
+-	status = 0;
++        pDrv->idlePollPeriod = (double)idlePollPeriod / 1000.0;
++        status = 0;
+       }
+     }
+-    drvPrint(drvPrintParam, TRACE_FLOW, "** Idle poll period set to %fs\n.", pDrv->idlePollPeriod);
++    /*drvPrint(drvPrintParam, TRACE_FLOW, "** Idle poll period set to %fs\n.", pDrv->idlePollPeriod);*/
+   }
+ 
+   return status;
+-- 
+1.7.0.4
+
