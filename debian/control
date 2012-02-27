@@ -1,18 +1,19 @@
-Source: tpmac
+Source: pmacasyn 
 Section: devel
 Priority: extra
 Maintainer: Daron Chabot <dchabot@bnl.gov>
-Build-Depends: debhelper (>= 7.0.50~), autotools-dev
+Build-Depends: debhelper (>= 7.0.50~), epics-dev (>= 3.14.11-2) 
 Standards-Version: 3.8.4
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
-Package: tpmac
+Package: libpmacasyn 
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, epics-dev (>= 3.14.11-8~lenny1), epics-synapps (>= 20110728-2~lenny1)
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Libraries for working with Delta Tau Turbo PMACs.
  tpmac contains the libraries and database defintions files for
  working with Delta Tau Turbo PMAC boards in an EPICS development
  environment. This is a stripped down version containing only the 
  support developed at Diamond Light Source.
  .
- This package contains support for network/serial-based PMACs.
+ This package provides shared libraries.

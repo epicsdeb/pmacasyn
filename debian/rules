@@ -11,7 +11,7 @@ export DH_VERBOSE=1
 
 export EPICS_HOST_ARCH:=$(shell /usr/lib/epics/startup/EpicsHostArch)
 
-INSTALL_LOCATION=/opt/tpmac
+INSTALL_LOCATION=/opt/pmacasyn
 %:
 	dh  $@
 
