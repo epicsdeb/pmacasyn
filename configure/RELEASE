@@ -1,0 +1,21 @@
+#RELEASE Location of external products
+# Run "gnumake clean uninstall install" in the application
+# top directory each time this file is changed.
+
+TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
+
+#Sergey:
+EPICS_BASE=/usr/local/epics/base
+SUPPORT=/home/gmca/epics_synApps/synApps_5_2
+#WORK = /dls_sw/work/R3.14.8.2/support
+
+ASYN=/home/gmca/epics_synApps/synApps_5_2/asyn/4-9
+#MOTOR=	$(SUPPORT)/motor/6-0dls4
+#MOTOR=	$(WORK)/motor
+
+#If using the sequencer, point SNCSEQ at its top directory:
+#SNCSEQ=/usr/local/epics/seq
+
+#Capfast users may need the following definitions
+#CAPFAST_TEMPLATES=
+#SCH2EDIF_PATH=
