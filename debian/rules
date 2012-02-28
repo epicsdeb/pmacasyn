@@ -9,11 +9,33 @@
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
 
-export EPICS_HOST_ARCH:=$(shell /usr/lib/epics/startup/EpicsHostArch)
+# chop out the source version from Changelog (ie 3.14.10)
+# Taken from CDBS
+DEB_VERSION = $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
+DEB_NOEPOCH_VERSION = $(shell echo $(DEB_VERSION) | cut -d: -f2-)
+SOV=$(shell echo "$(DEB_NOEPOCH_VERSION)"| cut -f 1 -d '-')
 
-INSTALL_LOCATION=/opt/pmacasyn
+EPICS_HOST_ARCH:=$(shell /usr/lib/epics/startup/EpicsHostArch)
+
+DEBUG_TAGETS=$(EPICS_HOST_ARCH)-debug
+TARGETS+=$(DEBUG_TAGETS) $(RTEMS_TARGETS)
+
+DEB_MAKE_MAKEVARS += EPICS_HOST_ARCH=$(EPICS_HOST_ARCH)
+DEB_MAKE_MAKEVARS += USE_RPATH=NO
+DEB_MAKE_MAKEVARS += SHRLIB_VERSION=$(SOV)
+DEB_MAKE_MAKEVARS += CROSS_COMPILER_TARGET_ARCHS="$(TARGETS)"
+
+#DEB_MAKE_ENVVARS += PATH=\``$$PWD/bin/$(EPICS_HOST_ARCH):$$PATH"\"
+#DEB_MAKE_ENVVARS += LD_LIBRARY_PATH=\``$$PWD/lib/$(EPICS_HOST_ARCH):               $$LD_LIBRARY_PATH"\"
+
+DEB_MAKE_INVOKE  = $(DEB_MAKE_ENVVARS) $(MAKE) $(DEB_MAKE_MAKEVARS)
+
 %:
 	dh  $@
 
 # no Automagic tools here...
 override_dh_auto_configure:
+
+# override and insert DEBUG_TARGETS in make command
+override_dh_auto_build:
+	$(DEB_MAKE_INVOKE)
