@@ -2,18 +2,72 @@ Source: pmacasyn
 Section: devel
 Priority: extra
 Maintainer: Daron Chabot <dchabot@bnl.gov>
-Build-Depends: debhelper (>= 7.0.50~), epics-dev (>= 3.14.11-2) 
+Build-Depends: debhelper (>= 7.0.50~), 
+	       epics-dev (>= 3.14.11-2),
+	       epics-synapps-dev (>= 20110728-2~lenny1)
 Standards-Version: 3.8.4
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
-Package: libpmacasyn 
+Package: libpmacasynipport
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Libraries for working with Delta Tau Turbo PMACs.
- tpmac contains the libraries and database defintions files for
- working with Delta Tau Turbo PMAC boards in an EPICS development
- environment. This is a stripped down version containing only the 
- support developed at Diamond Light Source.
+Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
+ This library contains the low-level PMAC communication support.
  .
  This package provides shared libraries.
+
+Package: epics-pmacasynipport-dev
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+	 libpmacasynipport (= ${binary:Version})
+Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
+ This library contains the low-level PMAC communication support.
+ .
+ This package contains files which may be used to run IOCs using
+ the synApps Motor Record and pmacasynmotor.
+
+Package: libpmacasynmotor
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+	 libpmacasynipport (= ${binary:Version})
+Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
+ This library contains the Motor Record device support.
+ .
+ This package provides shared libraries.
+
+Package: epics-pmacasynmotor-dev
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+	 epics-pmacasynipport-dev (= ${binary:Version})
+Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
+ This library contains the Motor Record device support.
+ .
+ This package contains files which may be used to run IOCs using
+ the synApps Motor Record and pmacasynmotor.
+
+Package: libpmacasyncoord
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+	 libpmacasynipport (= ${binary:Version})
+Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
+ This library contains support for mapping PMAC coordinate systems onto
+ Motor Records.
+ .
+ This package provides shared libraries.
+
+Package: epics-pmacasyncoord-dev
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}, 
+	 epics-pmacasynipport-dev (= ${binary:Version})
+Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
+ This library contains support for mapping PMAC coordinate systems onto
+ Motor Records.
+ .
+ This package contains files which may be used to run IOCs using
+ the synApps Motor Record.
