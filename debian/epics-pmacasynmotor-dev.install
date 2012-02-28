@@ -1,3 +1,1 @@
-usr/lib/epics/dbd
-usr/lib/epics/lib/linux-*
-usr/lib/epics/include
+dbd/pmacAsynMotor.dbd usr/lib/epics/dbd
