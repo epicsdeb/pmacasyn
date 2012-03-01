@@ -17,8 +17,8 @@ SOV=$(shell echo "$(DEB_NOEPOCH_VERSION)"| cut -f 1 -d '-')
 
 EPICS_HOST_ARCH:=$(shell /usr/lib/epics/startup/EpicsHostArch)
 
-DEBUG_TAGETS=$(EPICS_HOST_ARCH)-debug
-TARGETS+=$(DEBUG_TAGETS) $(RTEMS_TARGETS)
+DEBUG_TARGETS=$(EPICS_HOST_ARCH)-debug
+TARGETS+=$(DEBUG_TARGETS) $(RTEMS_TARGETS)
 
 DEB_MAKE_MAKEVARS += EPICS_HOST_ARCH=$(EPICS_HOST_ARCH)
 DEB_MAKE_MAKEVARS += USE_RPATH=NO
@@ -30,6 +30,10 @@ DEB_MAKE_MAKEVARS += CROSS_COMPILER_TARGET_ARCHS="$(TARGETS)"
 
 DEB_MAKE_INVOKE  = $(DEB_MAKE_ENVVARS) $(MAKE) $(DEB_MAKE_MAKEVARS)
 
+EPICS_ARCHS = $(EPICS_HOST_ARCH) $(DEBUG_TARGETS)
+EPICS_LIBS = pmacAsynIPPort pmacAsynMotor pmacAsynCoord
+LIB_ROOT=debian/tmp/usr/lib
+
 %:
 	dh  $@
 
@@ -39,3 +43,26 @@ override_dh_auto_configure:
 # override and insert DEBUG_TARGETS in make command
 override_dh_auto_build:
 	$(DEB_MAKE_INVOKE)
+
+override_dh_install:
+	set -ex; \
+	install -d $(LIB_ROOT); \
+	\
+	for ll in $(EPICS_LIBS); do \
+	    echo "$${ll}"; \
+	    for aa in $(EPICS_ARCHS); do \
+		echo "$${aa}"; \
+		install -d $(LIB_ROOT)/epics/lib/$${aa}; \
+		if [ "$$(echo "$${aa}" | grep -c debug)" = "1" ]; then \
+		    install -t $(LIB_ROOT)/epics/lib/$${aa} lib/$${aa}/lib$${ll}.a; \
+		    install -t $(LIB_ROOT)/epics/lib/$${aa} lib/$${aa}/lib$${ll}.so.$(SOV); \
+                    ln -s lib$${ll}.so.$(SOV) $(LIB_ROOT)/epics/lib/$${aa}/lib$${ll}.so; \
+		else \
+		    install -m 644 -t $(LIB_ROOT) lib/$${aa}/lib$${ll}.so.$(SOV); \
+                    install -m 644 -t $(LIB_ROOT)/epics/lib/$${aa}/ lib/$${aa}/lib$${ll}.a; \
+                    ln -s ../../../lib$${ll}.so.$(SOV) $(LIB_ROOT)/epics/lib/$${aa}/lib$${ll}.so; \
+		fi; \
+	    done; \
+	done
+
+	dh_install
