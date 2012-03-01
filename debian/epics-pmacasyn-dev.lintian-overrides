@@ -1,0 +1,4 @@
+epics-pmacasyn-dev: package-name-doesnt-match-sonames
+# upstream authors use camel-case... whatever
+epics-pmacasyn-dev: unstripped-binary-or-object
+# package contains libs with debugging symbols
