@@ -44,25 +44,9 @@ override_dh_auto_configure:
 override_dh_auto_build:
 	$(DEB_MAKE_INVOKE)
 
-override_dh_install:
-	set -ex; \
-	install -d $(LIB_ROOT); \
-	\
-	for ll in $(EPICS_LIBS); do \
-	    echo "$${ll}"; \
-	    for aa in $(EPICS_ARCHS); do \
-		echo "$${aa}"; \
-		install -d $(LIB_ROOT)/epics/lib/$${aa}; \
-		if [ "$$(echo "$${aa}" | grep -c debug)" = "1" ]; then \
-		    install -t $(LIB_ROOT)/epics/lib/$${aa} lib/$${aa}/lib$${ll}.a; \
-		    install -t $(LIB_ROOT)/epics/lib/$${aa} lib/$${aa}/lib$${ll}.so.$(SOV); \
-                    ln -s lib$${ll}.so.$(SOV) $(LIB_ROOT)/epics/lib/$${aa}/lib$${ll}.so; \
-		else \
-		    install -m 644 -t $(LIB_ROOT) lib/$${aa}/lib$${ll}.so.$(SOV); \
-                    install -m 644 -t $(LIB_ROOT)/epics/lib/$${aa}/ lib/$${aa}/lib$${ll}.a; \
-                    ln -s ../../../lib$${ll}.so.$(SOV) $(LIB_ROOT)/epics/lib/$${aa}/lib$${ll}.so; \
-		fi; \
-	    done; \
-	done
+override_dh_auto_install:
+	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(PWD)/debian/tmp/usr/lib/epics
 
+override_dh_install:
+	dh_epics_installlibs
 	dh_install

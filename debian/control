@@ -4,7 +4,8 @@ Priority: extra
 Maintainer: Daron Chabot <dchabot@bnl.gov>
 Build-Depends: debhelper (>= 7.0.50~), 
 	       epics-dev (>= 3.14.11-2),
-	       epics-synapps-dev (>= 20110728-2~lenny1)
+	       epics-synapps-dev (>= 20110728-2~lenny1),
+               epics-debhelper (>= 6~),
 Standards-Version: 3.8.4
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
