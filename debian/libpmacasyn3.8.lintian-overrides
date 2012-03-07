@@ -1,0 +1,2 @@
+libpmacasyn3.8: package-name-doesnt-match-sonames
+# upstream authors use camel-case... whatever

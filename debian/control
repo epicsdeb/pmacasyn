@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 7.0.50~),
 Standards-Version: 3.8.4
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
-Package: libpmacasyn
+Package: libpmacasyn3.8
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends}, ${misc:Depends}
@@ -22,7 +22,7 @@ Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
 
 Package: epics-pmacasyn-dev
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libpmacasyn (= ${binary:Version})
+Depends: ${shlibs:Depends}, ${misc:Depends}, libpmacasyn3.8 (= ${binary:Version})
 Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
  This library contains the low-level PMAC communication support 
  (pmacAsynIPPort), Motor Record device support (pmacAsynMotor),
