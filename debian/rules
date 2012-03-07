@@ -45,7 +45,7 @@ override_dh_auto_build:
 	$(DEB_MAKE_INVOKE)
 
 override_dh_auto_install:
-	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(PWD)/debian/tmp/usr/lib/epics
+	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/lib/epics
 
 override_dh_install:
 	dh_epics_installlibs
