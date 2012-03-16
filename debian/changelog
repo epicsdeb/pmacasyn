@@ -1,5 +1,13 @@
+pmacasyn (3.8-2) unstable; urgency=low
+
+  [ Daron Chabot ]
+  * Fix installation bug.
+
+ -- Daron Chabot <dchabot@bnl.gov>  Fri, 16 Mar 2012 11:05:11 -0400
+
 pmacasyn (3.8-1) unstable; urgency=low
 
+  [ Daron Chabot ]
   * Initial release
 
- -- Daron Chabot <dchabot@bnl.gov>  Sun, 19 Feb 2012 18:53:27 -0500
+ -- Daron Chabot <dchabot@bnl.gov>  Fri, 16 Mar 2012 11:04:31 -0400
