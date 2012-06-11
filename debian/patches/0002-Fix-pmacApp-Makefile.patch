@@ -1,0 +1,32 @@
+From c8242612e93fafd93ff36aee5da924b9a08ea4a2 Mon Sep 17 00:00:00 2001
+From: Daron Chabot <dchabot@bnl.gov>
+Date: Mon, 11 Jun 2012 16:06:06 -0400
+Subject: [PATCH 2/3] Fix pmacApp Makefile.
+
+---
+ pmacApp/Makefile |   11 ++++-------
+ 1 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/pmacApp/Makefile b/pmacApp/Makefile
+index fc5e886..10e0126 100644
+--- a/pmacApp/Makefile
++++ b/pmacApp/Makefile
+@@ -1,11 +1,8 @@
+ TOP = ..
+ include $(TOP)/configure/CONFIG
+-## DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *src*))
+-## DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Src*))
+-## DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *db*))
+-## DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Db*))
+-DIRS += src
+-DIRS += tsubSrc
+-## DIRS += Db
++DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *src*))
++DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Src*))
++DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *db*))
++DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Db*))
+ include $(TOP)/configure/RULES_DIRS
+ 
+-- 
+1.7.2.5
+

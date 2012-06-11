@@ -1,0 +1,37 @@
+From df5ad8de90808de80776d567fe5bcdb3d975870b Mon Sep 17 00:00:00 2001
+From: Daron Chabot <dchabot@bnl.gov>
+Date: Mon, 11 Jun 2012 16:06:20 -0400
+Subject: [PATCH 3/3] Configure for host builds only.
+
+---
+ configure/RELEASE |    8 +++++---
+ 1 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/configure/RELEASE b/configure/RELEASE
+index 461ed5d..a5a2bf4 100644
+--- a/configure/RELEASE
++++ b/configure/RELEASE
+@@ -5,11 +5,11 @@
+ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
+ 
+ #Sergey:
+-EPICS_BASE=/usr/local/epics/base
+-SUPPORT=/home/gmca/epics_synApps/synApps
++#EPICS_BASE=/usr/local/epics/base
++#SUPPORT=/home/gmca/epics_synApps/synApps
+ #WORK = /dls_sw/work/R3.14.8.2/support
+ 
+-ASYN=/home/gmca/epics_synApps/synApps/asyn/4-13
++#ASYN=/home/gmca/epics_synApps/synApps/asyn/4-13
+ #MOTOR=	$(SUPPORT)/motor/6-0dls4
+ #MOTOR=	$(WORK)/motor
+ 
+@@ -19,3 +19,5 @@ ASYN=/home/gmca/epics_synApps/synApps/asyn/4-13
+ #Capfast users may need the following definitions
+ #CAPFAST_TEMPLATES=
+ #SCH2EDIF_PATH=
++
++EPICS_BASE=/usr/lib/epics
+-- 
+1.7.2.5
+
