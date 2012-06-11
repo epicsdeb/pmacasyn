@@ -4,6 +4,26 @@
 
 extern "C" {
 
+/* int pmacSetDefaultCoordSteps(int defaultSteps) */
+static const iocshArg pmacSetDefaultCoordStepsArg0 = {"Default Steps", iocshArgInt};
+static const iocshArg * const pmacSetDefaultCoordStepsArgs[1] = {&pmacSetDefaultCoordStepsArg0};
+static const iocshFuncDef pmacSetDefaultCoordStepsDef = {"pmacSetDefaultCoordSteps", 1, pmacSetDefaultCoordStepsArgs};
+static void pmacSetDefaultCoordStepsCallFunc(const iocshArgBuf *args)
+{
+  pmacSetDefaultCoordSteps(args[0].ival);
+}
+
+/* int pmacSetCoordStepsPerUnit(int csRef, int axis, int stepsPerUnit) */
+static const iocshArg pmacSetCoordStepsPerUnitArg0 = {"CS Ref", iocshArgInt};
+static const iocshArg pmacSetCoordStepsPerUnitArg1 = {"Axis number", iocshArgInt};
+static const iocshArg pmacSetCoordStepsPerUnitArg2 = {"Steps per unit", iocshArgInt};
+  static const iocshArg * const pmacSetCoordStepsPerUnitArgs[3] = {&pmacSetCoordStepsPerUnitArg0, &pmacSetCoordStepsPerUnitArg1, &pmacSetCoordStepsPerUnitArg2};
+static const iocshFuncDef pmacSetCoordStepsPerUnitDef = {"pmacSetCoordStepsPerUnit", 3, pmacSetCoordStepsPerUnitArgs};
+static void pmacSetCoordStepsPerUnitCallFunc(const iocshArgBuf *args)
+{
+  pmacSetCoordStepsPerUnit(args[0].ival, args[1].ival, args[2].ival);
+}
+
 /* int pmacSetCoordMovingPollPeriod(int card, int movingPollPeriod) */
 static const iocshArg pmacSetCoordMovingPollPeriodArg0 = {"CS number", iocshArgInt};
 static const iocshArg pmacSetCoordMovingPollPeriodArg1 = {"Moving poll period", iocshArgInt};
@@ -51,6 +71,8 @@ void pmacAsynCoordRegister(void)
   iocshRegister(&pmacAsynCoordCreateDef, pmacAsynCoordCreateCallFunc);
   iocshRegister(&pmacSetCoordMovingPollPeriodDef, pmacSetCoordMovingPollPeriodCallFunc);
   iocshRegister(&pmacSetCoordIdlePollPeriodDef, pmacSetCoordIdlePollPeriodCallFunc);
+  iocshRegister(&pmacSetCoordStepsPerUnitDef, pmacSetCoordStepsPerUnitCallFunc);
+  iocshRegister(&pmacSetDefaultCoordStepsDef, pmacSetDefaultCoordStepsCallFunc);
 }
 epicsExportRegistrar(pmacAsynCoordRegister);
 

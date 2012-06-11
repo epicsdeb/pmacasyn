@@ -6,10 +6,10 @@ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
 #Sergey:
 EPICS_BASE=/usr/local/epics/base
-SUPPORT=/home/gmca/epics_synApps/synApps_5_2
+SUPPORT=/home/gmca/epics_synApps/synApps
 #WORK = /dls_sw/work/R3.14.8.2/support
 
-ASYN=/home/gmca/epics_synApps/synApps_5_2/asyn/4-9
+ASYN=/home/gmca/epics_synApps/synApps/asyn/4-13
 #MOTOR=	$(SUPPORT)/motor/6-0dls4
 #MOTOR=	$(WORK)/motor
 
