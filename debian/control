@@ -3,7 +3,7 @@ Section: devel
 Priority: extra
 Maintainer: Daron Chabot <dchabot@bnl.gov>
 Build-Depends: debhelper (>= 7.0.50~),
-	       	epics-synapps-dev,
+	       	epics-synapps-dev,rtems-synapps-mvme3100,
           epics-debhelper (>= 6~),
 Standards-Version: 3.9.1
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
@@ -34,3 +34,20 @@ Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
  This package contains files which may be used to run IOCs controlling 
  Ethernet-based Delta Tau Turbo PMACs using the synApps Motor Record 
  and pmacasynmotor.
+
+Package: rtems-pmacasyn-mvme3100
+Architecture: any
+Depends: epics-pmacasyn-dev (= ${binary:Version}),
+        rtems-synapps-mvme3100, ${misc:Depends}
+Description: pmacasyn support for the mvme3100
+ Libraries for working with Delta Tau Turbo PMACs within EPICS.
+ This library contains the low-level PMAC communication support
+ (pmacAsynIPPort), Motor Record device support (pmacAsynMotor),
+ and Motor Record device support for PMAC Coordinate Systems
+ (pmacAsynCoord).
+ .
+ This package contains files which may be used to run IOCs controlling
+ Ethernet-based Delta Tau Turbo PMACs using the synApps Motor Record
+ and pmacasynmotor.
+ .
+ This package contains support for the MVME3100 PowerPC based VME SBC.
