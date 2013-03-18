@@ -1,3 +1,9 @@
+pmacasyn (3.10-3) unstable; urgency=low
+
+  * Fix installation bug.
+
+ -- Daron Chabot <dchabot@bnl.gov>  Mon, 18 Mar 2013 16:55:41 -0400
+
 pmacasyn (3.10-2) unstable; urgency=low
 
   * Add package for RTEMS-mvme3100 support.
