@@ -13,6 +13,7 @@ Architecture: any
 Section: libs
 Depends: epics-synapps-dev, ${shlibs:Depends}, ${misc:Depends}
 Recommends: epics-pmacasyn-dev (= ${binary:Version})
+Replaces: libpmacasyn3.10 (<= ${binary:Version})	
 Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
  This library contains the low-level PMAC communication support 
  (pmacAsynIPPort), Motor Record device support (pmacAsynMotor),
@@ -25,6 +26,7 @@ Package: epics-pmacasyn-dev
 Architecture: any
 Depends: libpmacasyn3.10 (= ${binary:Version}), 
 				epics-synapps-dev, ${shlibs:Depends}, ${misc:Depends}
+Replaces: epics-pmacasyn-dev (<= ${binary:Version})
 Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
  This library contains the low-level PMAC communication support 
  (pmacAsynIPPort), Motor Record device support (pmacAsynMotor),
@@ -39,6 +41,7 @@ Package: rtems-pmacasyn-mvme3100
 Architecture: any
 Depends: epics-pmacasyn-dev (= ${binary:Version}),
         rtems-synapps-mvme3100, ${misc:Depends}
+Replaces: rtems-pmacasyn-mvme3100 (<= ${binary:Version})
 Description: pmacasyn support for the mvme3100
  Libraries for working with Delta Tau Turbo PMACs within EPICS.
  This library contains the low-level PMAC communication support
