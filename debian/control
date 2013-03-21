@@ -5,6 +5,7 @@ Maintainer: Daron Chabot <dchabot@bnl.gov>
 Build-Depends: debhelper (>= 7.0.50~),
 	       	epics-synapps-dev,rtems-synapps-mvme3100,
           epics-debhelper (>= 6~),
+XS-Rtems-Build-Depends: rtems-epics, rtems-synapps,
 Standards-Version: 3.9.1
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
