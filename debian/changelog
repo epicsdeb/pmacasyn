@@ -1,3 +1,9 @@
+pmacasyn (3.10-5) unstable; urgency=low
+
+  * Fix strip bug. GNU strip altering the ELF header, rendering libs broken.
+
+ -- Daron Chabot <dchabot@bnl.gov>  Thr, 21 Mar 2013 16:23:02 -0400
+
 pmacasyn (3.10-4) unstable; urgency=low
 
   * Replace older binary installations.
