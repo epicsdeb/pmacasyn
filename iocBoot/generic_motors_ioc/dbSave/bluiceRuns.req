@@ -1,0 +1,6 @@
+$(P)runCount
+$(P)currentRun
+$(P)isActive
+$(P)doseMode
+$(P)updated
+$(P)currentUser
