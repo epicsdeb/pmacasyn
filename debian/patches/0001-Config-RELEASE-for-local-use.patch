@@ -1,0 +1,54 @@
+From 8ac342654da34f95dab3fbe13e64a77fdfb412b4 Mon Sep 17 00:00:00 2001
+From: Daron Chabot <dchabot@bnl.gov>
+Date: Mon, 10 Jun 2013 21:02:45 -0400
+Subject: [PATCH 1/4] Config RELEASE for local use.
+
+---
+ configure/CONFIG  |    2 +-
+ configure/RELEASE |   15 ++++++++++-----
+ 2 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/configure/CONFIG b/configure/CONFIG
+index dff8a39..915dd07 100644
+--- a/configure/CONFIG
++++ b/configure/CONFIG
+@@ -5,7 +5,7 @@ include $(TOP)/configure/CONFIG_APP
+ # At present, base has only 68040
+ #CROSS_COMPILER_TARGET_ARCHS = vxWorks-68040 vxWorks-ppc604
+ #CROSS_COMPILER_TARGET_ARCHS = vxWorks-68040
+-CROSS_COMPILER_TARGET_ARCHS = vxWorks-ppc604_long
++#CROSS_COMPILER_TARGET_ARCHS = vxWorks-ppc604_long
+ 
+ # Use this when your IOC and the host use different paths
+ # to access the application. Typically this will be 
+diff --git a/configure/RELEASE b/configure/RELEASE
+index 9843148..f073732 100644
+--- a/configure/RELEASE
++++ b/configure/RELEASE
+@@ -5,13 +5,18 @@
+ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
+ 
+ #Sergey:
+-EPICS_BASE= /dls_sw/epics/R3.14.11/base
++#EPICS_BASE= /dls_sw/epics/R3.14.11/base
++EPICS_BASE= /usr/lib/epics
+ 
+-SUPPORT=    /dls_sw/prod/R3.14.11/support
+-WORK=       /dls_sw/work/R3.14.11/support
++#SUPPORT=    /dls_sw/prod/R3.14.11/support
++SUPPORT=    /usr/lib/epics
++#WORK=       /dls_sw/work/R3.14.11/support
++WORK=       $(SUPPORT)
+ 
+-ASYN=       $(SUPPORT)/asyn/4-17
+-MOTOR=      $(SUPPORT)/motor/6-7-1dls6
++#ASYN=       $(SUPPORT)/asyn/4-17
++ASYN=       $(SUPPORT)
++#MOTOR=      $(SUPPORT)/motor/6-7-1dls6
++MOTOR=      $(SUPPORT)
+ 
+ #If using the sequencer, point SNCSEQ at its top directory:
+ #SNCSEQ=/usr/local/epics/seq
+-- 
+1.7.10.4
+

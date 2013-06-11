@@ -1,6 +1,4 @@
-0001-Change-location-of-EPICS_BASE.patch
-0002-Fix-pmacApp-Makefile.patch
-0003-Configure-for-host-builds-only.patch
-#0004-Fix-seg-faults.patch
-#0005-Hack-around-initialization-problem.patch
-
+0001-Config-RELEASE-for-local-use.patch
+0002-Correct-motor-parameter-names.patch
+0003-Omit-pmac-vme-files.patch
+0004-Add-missing-LICENSE-file.patch
