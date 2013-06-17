@@ -1,0 +1,53 @@
+From 516dfbd7b9022fdfb74c18700eb52f92c4da0738 Mon Sep 17 00:00:00 2001
+From: Daron Chabot <dchabot@bnl.gov>
+Date: Mon, 17 Jun 2013 11:18:43 -0400
+Subject: [PATCH 3/4] Fix motor parameter names.
+
+Also, fix constructor typo.
+---
+ pmacApp/pmacAsynMotorPortSrc/pmacAxis.cpp       |    6 +++---
+ pmacApp/pmacAsynMotorPortSrc/pmacController.cpp |    4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/pmacApp/pmacAsynMotorPortSrc/pmacAxis.cpp b/pmacApp/pmacAsynMotorPortSrc/pmacAxis.cpp
+index 0c37aa7..c5dfaa5 100644
+--- a/pmacApp/pmacAsynMotorPortSrc/pmacAxis.cpp
++++ b/pmacApp/pmacAsynMotorPortSrc/pmacAxis.cpp
+@@ -135,9 +135,9 @@ asynStatus pmacAxis::getAxisInitialStatus(void)
+     } else {
+       setDoubleParam(pC_->motorLowLimit_,  low_limit*scale_);
+       setDoubleParam(pC_->motorHighLimit_, high_limit*scale_);
+-      setDoubleParam(pC_->motorPGain_,     pgain);
+-      setDoubleParam(pC_->motorIGain_,     igain);
+-      setDoubleParam(pC_->motorDGain_,     dgain);
++      setDoubleParam(pC_->motorPgain_,     pgain);
++      setDoubleParam(pC_->motorIgain_,     igain);
++      setDoubleParam(pC_->motorDgain_,     dgain);
+       setIntegerParam(pC_->motorStatusHasEncoder_, 1);
+       setIntegerParam(pC_->motorStatusGainSupport_, 1);
+     }
+diff --git a/pmacApp/pmacAsynMotorPortSrc/pmacController.cpp b/pmacApp/pmacAsynMotorPortSrc/pmacController.cpp
+index aba5b37..cd3bb55 100644
+--- a/pmacApp/pmacAsynMotorPortSrc/pmacController.cpp
++++ b/pmacApp/pmacAsynMotorPortSrc/pmacController.cpp
+@@ -184,7 +184,7 @@ pmacController::pmacController(const char *portName, const char *lowLevelPortNam
+   createParam(PMAC_C_FeedRateLimitString,    asynParamInt32, &PMAC_C_FeedRateLimit_);
+   createParam(PMAC_C_FeedRatePollString,     asynParamInt32, &PMAC_C_FeedRatePoll_);
+   createParam(PMAC_C_FeedRateProblemString,  asynParamInt32, &PMAC_C_FeedRateProblem_);
+-  createParam(PMAC_C_FirstParamString,       asynParamInt32, &PMAC_C_LastParam_);
++  createParam(PMAC_C_LastParamString,       asynParamInt32, &PMAC_C_LastParam_);
+ 
+   //Connect our Asyn user to the low level port that is a parameter to this constructor
+   if (lowLevelPortConnect(lowLevelPortName, lowLevelPortAddress, &lowLevelPortUser_, "\006", "\r") != asynSuccess) {
+@@ -420,7 +420,7 @@ asynStatus pmacController::writeFloat64(asynUser *pasynUser, epicsFloat64 value)
+     /*Now set position on encoder axis, if one is in use.*/
+                 
+     if (pAxis->encoder_axis_) {
+-      getDoubleParam(motorEncoderRatio_,  &encRatio);
++      getDoubleParam(motorEncRatio_,  &encRatio);
+       encposition = (epicsInt32) floor((position*encRatio) + 0.5);
+                   
+       sprintf(command, "#%dK M%d61=%d*I%d08 M%d62=%d*I%d08",
+-- 
+1.7.10.4
+

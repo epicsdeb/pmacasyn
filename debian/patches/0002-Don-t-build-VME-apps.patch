@@ -1,12 +1,13 @@
-From 7ef6cd016b1a9d933b7a46051a732c231055a7f2 Mon Sep 17 00:00:00 2001
+From 61d2b00f774aff93f7c15aca49db854641fc260a Mon Sep 17 00:00:00 2001
 From: Daron Chabot <dchabot@bnl.gov>
-Date: Mon, 10 Jun 2013 22:48:44 -0400
-Subject: [PATCH 3/4] Omit pmac vme files.
+Date: Mon, 17 Jun 2013 12:11:53 -0400
+Subject: [PATCH 2/4] Don't build VME apps.
 
-Avoid generating unnecessary binaries, libs, and headers.
+Includes VME PMAC code, db's, opi's, etc.
 ---
- Makefile                                      |    2 +-
- pmacApp/Makefile                              |    2 +-
+ Makefile                                      |    6 +-
+ pmacApp/Makefile                              |    6 +-
+ pmacApp/pmacAsynMotorPortSrc/Makefile         |    2 +-
  pmacApp/src/Makefile                          |   42 -
  pmacApp/src/Release.txt                       |   20 -
  pmacApp/src/add_pmac.dbd                      |   26 -
@@ -71,7 +72,7 @@ Avoid generating unnecessary binaries, libs, and headers.
  testApp/src/testPmacAsynIPPort.c              |  272 ---
  testApp/src/testPmacAsynIPPort.h              |   17 -
  testApp/src/testPmacAsynIPPortMain.cpp        |   30 -
- 66 files changed, 2 insertions(+), 23824 deletions(-)
+ 67 files changed, 7 insertions(+), 23829 deletions(-)
  delete mode 100644 pmacApp/src/Makefile
  delete mode 100644 pmacApp/src/Release.txt
  delete mode 100644 pmacApp/src/add_pmac.dbd
@@ -138,30 +139,51 @@ Avoid generating unnecessary binaries, libs, and headers.
  delete mode 100644 testApp/src/testPmacAsynIPPortMain.cpp
 
 diff --git a/Makefile b/Makefile
-index 84dc5fe..7931cb3 100644
+index 84dc5fe..9de816b 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -7,7 +7,7 @@ DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *app))
+@@ -6,9 +6,9 @@ DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *App))
+ DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *app))
  #DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard iocBoot))
  #DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard iocboot))
- DIRS += pmc
+-DIRS += pmc
 -DIRS += example
+-DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard etc))
++#DIRS += pmc
 +#DIRS += example
- DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard etc))
++#DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard etc))
  # Comment out the following line to disable building of example iocs
  #DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard iocs))
+ include $(TOP)/configure/RULES_TOP
 diff --git a/pmacApp/Makefile b/pmacApp/Makefile
-index 10e0126..5a73deb 100644
+index 8bfdc8a..ff8a0b4 100644
 --- a/pmacApp/Makefile
 +++ b/pmacApp/Makefile
-@@ -3,6 +3,6 @@ include $(TOP)/configure/CONFIG
+@@ -2,8 +2,8 @@ TOP = ..
+ include $(TOP)/configure/CONFIG
  DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *src*))
  DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Src*))
- DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *db*))
+-DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *db*))
 -DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Db*))
+-DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *opi*))
++#DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *db*))
 +#DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Db*))
++#DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *opi*))
  include $(TOP)/configure/RULES_DIRS
  
+diff --git a/pmacApp/pmacAsynMotorPortSrc/Makefile b/pmacApp/pmacAsynMotorPortSrc/Makefile
+index b7abdbe..8b235d6 100644
+--- a/pmacApp/pmacAsynMotorPortSrc/Makefile
++++ b/pmacApp/pmacAsynMotorPortSrc/Makefile
+@@ -5,7 +5,7 @@ include $(TOP)/configure/CONFIG
+ # -------------------------------
+ 
+ DBD += pmacAsynMotorPort.dbd
+-DBD += pmacAsynMotorPortVxWorks.dbd
++#DBD += pmacAsynMotorPortVxWorks.dbd
+ 
+ LIBRARY_IOC = pmacAsynMotorPort
+ pmacAsynMotorPort_SRCS = pmacController.cpp pmacAxis.cpp
 diff --git a/pmacApp/src/Makefile b/pmacApp/src/Makefile
 deleted file mode 100644
 index 923aef7..0000000

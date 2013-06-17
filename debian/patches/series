@@ -1,4 +1,4 @@
 0001-Config-RELEASE-for-local-use.patch
-0002-Correct-motor-parameter-names.patch
-0003-Omit-pmac-vme-files.patch
+0002-Don-t-build-VME-apps.patch
+0003-Fix-motor-parameter-names.patch
 0004-Add-missing-LICENSE-file.patch
