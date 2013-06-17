@@ -1,2 +1,5 @@
 libpmacasyn3.10: package-name-doesnt-match-sonames
+libpmacasyn3.10: hardening-no-relro
+libpmacasyn3.10: extra-license-file
+libpmacasyn3.10: dev-pkg-without-shlib-symlink
 # upstream authors use camel-case... whatever
