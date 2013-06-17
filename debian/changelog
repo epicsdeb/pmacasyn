@@ -1,3 +1,11 @@
+pmacasyn (3.10.11-1) unstable; urgency=low
+
+  * Upstream release 3.10.11
+  * Add patches for 3.10.11.
+  * Omit building RTEMS package.
+
+ -- Daron Chabot <dchabot@bnl.gov>  Mon, 10 Jun 2013 21:45:28 -0400
+
 pmacasyn (3.10-5) unstable; urgency=low
 
   * Fix strip bug. GNU strip altering the ELF header, rendering libs broken.
