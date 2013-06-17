@@ -1,3 +1,11 @@
+pmacasyn (3.10.12-1) unstable; urgency=low
+
+  * Upstream release 3.10.12.
+  * Omit building RTEMS package.
+  * Bump standards version.
+
+ -- Daron Chabot <dchabot@bnl.gov>  Mon, 17 Jun 2013 11:47:04 -0400
+
 pmacasyn (3.10.11-1) unstable; urgency=low
 
   * Upstream release 3.10.11
