@@ -5,7 +5,7 @@ Maintainer: Daron Chabot <dchabot@bnl.gov>
 Build-Depends: debhelper (>= 7.0.50~),
 	       	epics-synapps-dev,
           epics-debhelper (>= 6~),
-Standards-Version: 3.9.1
+Standards-Version: 3.9.4
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
 Package: libpmacasyn3.10
