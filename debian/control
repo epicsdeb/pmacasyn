@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 7.0.50~),
             rtems-synapps-mvme3100 (>= 20130320),
             epics-debhelper (>= 6~),
 X-Rtems-Build-Depends: rtems-epics, rtems-synapps,
-Standards-Version: 3.9.4
+Standards-Version: 3.9.1
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
 Package: libpmacasyn3.10
