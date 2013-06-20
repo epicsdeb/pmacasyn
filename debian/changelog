@@ -1,8 +1,13 @@
-pmacasyn (3.10.12-1) unstable; urgency=low
+pmacasyn (3.10.12-2~squeeze1) squeeze; urgency=low
+
+  * Update changelog for squeeze.
+
+ -- Daron Chabot <dchabot@bnl.gov>  Thu, 20 Jun 2013 12:38:39 -0400
+
+pmacasyn (3.10.12-1~squeeze1) squeeze; urgency=low
 
   * Upstream release 3.10.12.
-  * Omit building RTEMS package.
-  * Bump standards version.
+  * pmacAsynCoord is now a separate package.
 
  -- Daron Chabot <dchabot@bnl.gov>  Mon, 17 Jun 2013 11:47:04 -0400
 
