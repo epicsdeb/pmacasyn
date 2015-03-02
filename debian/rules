@@ -35,6 +35,11 @@ export DH_VERBOSE=1
 #EPICS_LIBS = pmacAsynIPPort pmacAsynMotor pmacAsynCoord
 #LIB_ROOT=debian/tmp/usr/lib
 
+DEB_USR_CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
+DEB_USR_CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+DEB_USR_CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+DEB_USR_LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
+
 %:
 	dh  $@ --with epics -Sepicsmake
 
@@ -46,11 +51,16 @@ override_dh_install:
 #override_dh_auto_configure:
 
 # override and insert DEBUG_TARGETS in make command
-#override_dh_auto_build:
-#	$(DEB_MAKE_INVOKE)
+override_dh_auto_build:
+	dh_auto_build -- \
+	USR_CFLAGS_Linux="$(DEB_USR_CFLAGS)" \
+	USR_CXXFLAGS_Linux="$(DEB_USR_CXXFLAGS)" \
+	USR_CPPFLAGS_Linux="$(DEB_USR_CPPFLAGS)" \
+	USR_LDFLAGS_Linux="$(DEB_USR_LDFLAGS)"
 
-#override_dh_auto_install:
-#	$(DEB_MAKE_INVOKE) INSTALL_LOCATION=$(CURDIR)/debian/tmp/usr/lib/epics
+override_dh_auto_install:
+	dh_auto_install -- \
+	USR_LDFLAGS_Linux="$(DEB_USR_LDFLAGS)"
 
 #override_dh_install:
 #	dh_epics_installlibs
