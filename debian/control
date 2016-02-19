@@ -11,7 +11,7 @@ Standards-Version: 3.9.4
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
 Package: libpmacasyn3.10
-Architecture: any
+Architecture: amd64
 Section: libs
 Depends: epics-synapps-dev (>= 20141009),
 		 ${shlibs:Depends}, ${misc:Depends}
@@ -25,7 +25,7 @@ Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
  This package provides shared libraries.
 
 Package: epics-pmacasyn-dev
-Architecture: any
+Architecture: amd64
 Depends: libpmacasyn3.10 (= ${binary:Version}), 
 				epics-synapps-dev (>= 20141009),
                 ${shlibs:Depends}, ${misc:Depends}
@@ -40,7 +40,7 @@ Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
  and pmacasynmotor.
 
 Package: rtems-pmacasyn-mvme3100
-Architecture: any
+Architecture: amd64
 Depends: epics-pmacasyn-dev (= ${binary:Version}),
         rtems-synapps-mvme3100 (>= 20141009), ${misc:Depends}
 Description: pmacasyn support for the mvme3100
