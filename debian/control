@@ -3,6 +3,8 @@ Section: devel
 Priority: extra
 Maintainer: Daron Chabot <dchabot@bnl.gov>
 Build-Depends: debhelper (>= 9), epics-debhelper (>= 8.14~),
+               epics-dev,
+               epics-asyn-dev,
                epics-motor-dev,
 Standards-Version: 3.9.6
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
