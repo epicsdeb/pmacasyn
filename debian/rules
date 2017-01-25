@@ -1,67 +1,9 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-# This file was originally written by Joey Hess and Craig Small.
-# As a special exception, when this file is copied by dh-make into a
-# dh-make output file, you may use that output file without restriction.
-# This special exception was added by Craig Small in version 0.37 of dh-make.
 
-# Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
 
-# chop out the source version from Changelog (ie 3.14.10)
-# Taken from CDBS
-#DEB_VERSION = $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
-#DEB_NOEPOCH_VERSION = $(shell echo $(DEB_VERSION) | cut -d: -f2-)
-#SOV=$(shell echo "$(DEB_NOEPOCH_VERSION)"| cut -f 1 -d '-')
-
-#EPICS_HOST_ARCH:=$(shell /usr/lib/epics/startup/EpicsHostArch)
-
-#DEBUG_TARGETS=$(EPICS_HOST_ARCH)-debug
-#RTEMS_TARGETS=RTEMS-mvme3100
-#TARGETS+=$(DEBUG_TARGETS) $(RTEMS_TARGETS)
-
-#DEB_MAKE_MAKEVARS += EPICS_HOST_ARCH=$(EPICS_HOST_ARCH)
-#DEB_MAKE_MAKEVARS += USE_RPATH=NO
-#DEB_MAKE_MAKEVARS += SHRLIB_VERSION=$(SOV)
-#DEB_MAKE_MAKEVARS += CROSS_COMPILER_TARGET_ARCHS="$(TARGETS)"
-
-#DEB_MAKE_ENVVARS += PATH=\``$$PWD/bin/$(EPICS_HOST_ARCH):$$PATH"\"
-#DEB_MAKE_ENVVARS += LD_LIBRARY_PATH=\``$$PWD/lib/$(EPICS_HOST_ARCH):               $$LD_LIBRARY_PATH"\"
-
-#DEB_MAKE_INVOKE  = $(DEB_MAKE_ENVVARS) $(MAKE) $(DEB_MAKE_MAKEVARS)
-
-#EPICS_ARCHS = $(EPICS_HOST_ARCH) $(DEBUG_TARGETS)
-#EPICS_LIBS = pmacAsynIPPort pmacAsynMotor pmacAsynCoord
-#LIB_ROOT=debian/tmp/usr/lib
-
-DEB_USR_CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
-DEB_USR_CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
-DEB_USR_CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
-DEB_USR_LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
-
 %:
-	dh  $@ --with epics -Sepicsmake
+	dh $@ --with epics -Sepicsmake --parallel
 
 override_dh_install:
-	rm -rf debian/tmp/usr/lib/epics/configure
 	dh_install --fail-missing
-
-# no Automagic tools here...
-#override_dh_auto_configure:
-
-# override and insert DEBUG_TARGETS in make command
-override_dh_auto_build:
-	dh_auto_build -- \
-	USR_CFLAGS_Linux="$(DEB_USR_CFLAGS)" \
-	USR_CXXFLAGS_Linux="$(DEB_USR_CXXFLAGS)" \
-	USR_CPPFLAGS_Linux="$(DEB_USR_CPPFLAGS)" \
-	USR_LDFLAGS_Linux="$(DEB_USR_LDFLAGS)"
-
-override_dh_auto_install:
-	dh_auto_install -- \
-	USR_LDFLAGS_Linux="$(DEB_USR_LDFLAGS)"
-
-#override_dh_install:
-#	dh_epics_installlibs
-#	dh_install
