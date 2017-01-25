@@ -1,3 +1,9 @@
+pmacasyn (3.10.12-9) unstable; urgency=low
+
+  * BLD: omit version in lib, pkg names
+
+ -- Daron Chabot <chabot@frib.msu.edu>  Wed, 25 Jan 2017 13:10:12 -0500
+
 pmacasyn (3.10.12-8) unstable; urgency=low
 
   * BLD: update dependencies
