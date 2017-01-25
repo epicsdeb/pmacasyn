@@ -1,3 +1,15 @@
+pmacasyn (3.10.12-8) unstable; urgency=low
+
+  * BLD: update dependencies
+  * BLD: drop rtems-mvme3100 builds
+  * GIT: ignore
+  * BLD: simplify rules
+  * CLN: let epics-debhelper do its thing
+  * BLD: build deps
+  * CLN: let lintian breathe
+
+ -- Daron Chabot <chabot@frib.msu.edu>  Wed, 25 Jan 2017 12:54:43 -0500
+
 pmacasyn (3.10.12-7) wheezy; urgency=low
 
   * Bump.
