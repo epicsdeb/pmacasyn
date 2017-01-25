@@ -1,8 +1,0 @@
-epics-pmacasyn-dev: package-name-doesnt-match-sonames
-# upstream authors use camel-case... whatever
-epics-pmacasyn-dev: unstripped-binary-or-object
-# package contains libs with debugging symbols
-epics-pmacasyn-dev: hardening-no-relro
-epics-pmacasyn-dev: postinst-has-useless-call-to-ldconfig
-epics-pmacasyn-dev: postrm-has-useless-call-to-ldconfig
-
