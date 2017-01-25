@@ -1,19 +1,16 @@
-Source: pmacasyn 
+Source: pmacasyn
 Section: devel
 Priority: extra
 Maintainer: Daron Chabot <dchabot@bnl.gov>
-Build-Depends: debhelper (>= 7.0.50~),
-	       	epics-synapps-dev (>= 20141009), 
-            rtems-synapps-mvme3100 (>= 20141009),
-            epics-debhelper (>= 6~),
-X-Rtems-Build-Depends: rtems-epics, rtems-synapps,
-Standards-Version: 3.9.4
+Build-Depends: debhelper (>= 9), epics-debhelper (>= 8.14~),
+               epics-motor-dev,
+Standards-Version: 3.9.6
 Homepage: http://www.gmca.aps.anl.gov/TPMAC2/
 
 Package: libpmacasyn3.10
 Architecture: any
 Section: libs
-Depends: epics-synapps-dev (>= 20141009),
+Depends: epics-motor-dev,
 		 ${shlibs:Depends}, ${misc:Depends}
 Recommends: epics-pmacasyn-dev (= ${binary:Version})
 Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
@@ -27,8 +24,9 @@ Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
 Package: epics-pmacasyn-dev
 Architecture: any
 Depends: libpmacasyn3.10 (= ${binary:Version}), 
-				epics-synapps-dev (>= 20141009),
-                ${shlibs:Depends}, ${misc:Depends}
+				epics-motor-dev,
+                ${shlibs:Depends}, ${misc:Depends},
+                ${epics:Depends},
 Description: Libraries for working with Delta Tau Turbo PMACs within EPICS.
  This library contains the low-level PMAC communication support 
  (pmacAsynIPPort), and Motor Record device support (pmacAsynMotor and
