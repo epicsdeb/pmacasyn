@@ -2,3 +2,4 @@
 0002-Don-t-build-VME-apps.patch
 0003-Fix-motor-parameter-names.patch
 0004-Add-missing-LICENSE-file.patch
+0005-BLD-account-for-libasyn-dependencies.patch

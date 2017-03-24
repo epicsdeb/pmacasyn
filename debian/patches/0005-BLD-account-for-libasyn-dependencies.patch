@@ -1,0 +1,50 @@
+From 7d689b8acd0d3f6c65cedd2d6a03416411ae30a7 Mon Sep 17 00:00:00 2001
+From: Daron Chabot <chabot@frib.msu.edu>
+Date: Fri, 24 Mar 2017 14:50:00 -0400
+Subject: [PATCH 5/5] BLD: account for libasyn dependencies
+
+---
+ pmacApp/pmacAsynIPPortSrc/Makefile    | 1 +
+ pmacApp/pmacAsynMotorPortSrc/Makefile | 1 +
+ pmacApp/pmacAsynMotorSrc/Makefile     | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/pmacApp/pmacAsynIPPortSrc/Makefile b/pmacApp/pmacAsynIPPortSrc/Makefile
+index 9312f83..796be91 100644
+--- a/pmacApp/pmacAsynIPPortSrc/Makefile
++++ b/pmacApp/pmacAsynIPPortSrc/Makefile
+@@ -8,6 +8,7 @@ DBD = pmacAsynIPPort.dbd
+ INC += pmacAsynIPPort.h
+ 
+ LIBRARY = pmacAsynIPPort
++pmacAsynIPPort_LIBS = asyn
+ pmacAsynIPPort_SRCS = pmacAsynIPPort.c 
+ 
+ include $(TOP)/configure/RULES
+diff --git a/pmacApp/pmacAsynMotorPortSrc/Makefile b/pmacApp/pmacAsynMotorPortSrc/Makefile
+index b7abdbe..10b105e 100644
+--- a/pmacApp/pmacAsynMotorPortSrc/Makefile
++++ b/pmacApp/pmacAsynMotorPortSrc/Makefile
+@@ -8,6 +8,7 @@ DBD += pmacAsynMotorPort.dbd
+ DBD += pmacAsynMotorPortVxWorks.dbd
+ 
+ LIBRARY_IOC = pmacAsynMotorPort
++pmacAsynMotorPort_LIBS = asyn
+ pmacAsynMotorPort_SRCS = pmacController.cpp pmacAxis.cpp
+ 
+ include $(TOP)/configure/RULES
+diff --git a/pmacApp/pmacAsynMotorSrc/Makefile b/pmacApp/pmacAsynMotorSrc/Makefile
+index 475d281..36aff76 100644
+--- a/pmacApp/pmacAsynMotorSrc/Makefile
++++ b/pmacApp/pmacAsynMotorSrc/Makefile
+@@ -7,6 +7,7 @@ include $(TOP)/configure/CONFIG
+ DBD = pmacAsynMotor.dbd
+ 
+ LIBRARY = pmacAsynMotor
++pmacAsynMotor_LIBS = asyn
+ pmacAsynMotor_SRCS = pmacAsynMotor.c pmacAsynMotorRegister.cc
+ 
+ include $(TOP)/configure/RULES
+-- 
+2.1.4
+
