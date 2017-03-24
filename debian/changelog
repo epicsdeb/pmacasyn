@@ -1,3 +1,10 @@
+pmacasyn (3.10.12-10) unstable; urgency=low
+
+  * BLD: account for libasyn dependency
+  * BLD: metapatch
+
+ -- Daron Chabot <chabot@frib.msu.edu>  Fri, 24 Mar 2017 15:12:53 -0400
+
 pmacasyn (3.10.12-9) unstable; urgency=low
 
   * BLD: omit version in lib, pkg names
