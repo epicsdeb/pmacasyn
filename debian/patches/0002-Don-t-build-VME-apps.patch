@@ -7,7 +7,6 @@ Includes VME PMAC code, db's, opi's, etc.
 ---
  Makefile                                      |    6 +-
  pmacApp/Makefile                              |    6 +-
- pmacApp/pmacAsynMotorPortSrc/Makefile         |    2 +-
  pmacApp/src/Makefile                          |   42 -
  pmacApp/src/Release.txt                       |   20 -
  pmacApp/src/add_pmac.dbd                      |   26 -
@@ -171,19 +170,6 @@ index 8bfdc8a..ff8a0b4 100644
 +#DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *opi*))
  include $(TOP)/configure/RULES_DIRS
  
-diff --git a/pmacApp/pmacAsynMotorPortSrc/Makefile b/pmacApp/pmacAsynMotorPortSrc/Makefile
-index b7abdbe..8b235d6 100644
---- a/pmacApp/pmacAsynMotorPortSrc/Makefile
-+++ b/pmacApp/pmacAsynMotorPortSrc/Makefile
-@@ -5,7 +5,7 @@ include $(TOP)/configure/CONFIG
- # -------------------------------
- 
- DBD += pmacAsynMotorPort.dbd
--DBD += pmacAsynMotorPortVxWorks.dbd
-+#DBD += pmacAsynMotorPortVxWorks.dbd
- 
- LIBRARY_IOC = pmacAsynMotorPort
- pmacAsynMotorPort_SRCS = pmacController.cpp pmacAxis.cpp
 diff --git a/pmacApp/src/Makefile b/pmacApp/src/Makefile
 deleted file mode 100644
 index 923aef7..0000000
